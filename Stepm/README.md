@@ -60,15 +60,25 @@ return the ms counter at moment (initial value setted by previously name.setms)
 ------------------------------------------------------------------------------
 
 //
+
 // library Stepm.h
+
 // Simple example of use
+
 // move 128 steps forward (clockwise, right) following by 64 steps backward (counterclockwise, left)
+
 // 
+
 // function used:
+
 // begin() - init the timer library
+
 // where() - returns the number of steps remainding to stepmotor gets to it's destination
+
 // run(steps,speed,direction) - cause step motor to move according to parameters informed
+
 // 
+
 
 #include <Stepm.h>
 
