@@ -1,6 +1,9 @@
-This is a nonblock step motor (28byj-48) library based on interrupts<br>By Antonio Testa, March/2024
+
+This is a nonblock step motor (28byj-48) library based on interrupts<br>By Antonio Testa, March/2024<br><br>
+Special thanks to @gfvalvo from https://forum.arduino.cc who fixed the error: invalid-use-of-non-static-member-function and gave all tricks to use hardware timers inside the library<br><br>https://forum.arduino.cc/t/error-invalid-use-of-non-static-member-function/1240240<br><br>
 
 ------------------------------------------------------------------------------
+
 In the main program is mandatory to define the following:
 
 #include <Stepm.h>     //include the NewStep.h elibrary                   
@@ -9,7 +12,7 @@ Stepm name(4,16,17,5); //define instance for ULN2003 driver motor pins in4,in3,i
 
 name.begin();          //At setup() section, issue this begin() command to init the library timer
   
-------------------------------------------------------------------------------<br>
+------------------------------------------------------------------------------
 
 define instance:
 
@@ -40,7 +43,7 @@ As soon as initiated this ms counter is decremented each millisecond<br>
 name.getms();<br>
 return the ms counter at moment (initial ms value setted by previously name.setms)<br>
 
-------------------------------------------------------------------------------<br>
+------------------------------------------------------------------------------
 
 //<br>
 // library Stepm.h<br>
@@ -70,6 +73,5 @@ void loop()<br>
   sm.run(64, 3, false);              //start 64 steps backward (counterclockwise, left) <br>
 }<br>
 
-------------------------------------------------------------------------------<br>
-
+------------------------------------------------------------------------------
 
