@@ -1,17 +1,19 @@
-This is a nonblock step motor (28byj-48) library based on interrupts
+TThis is a nonblock step motor (28byj-48) library based on interrupts
 By Antonio Testa, March/2024
 
 ------------------------------------------------------------------------------
 In the main program is mandatory to define the following:
 
-#include <Stepm.h>     //include the NewStep.h elibrary           
+#include <Stepm.h>     //include the NewStep.h elibrary                   
+
 Stepm name(4,16,17,5); //define instance for ULN2003 driver motor pins in4,in3,in2,in1
-name.begin();          //At setup() section, issue this begin() command to init the library timer 
+
+name.begin();          //At setup() section, issue this begin() command to init the library timer  
 ------------------------------------------------------------------------------
 
 define instance:
 
-Stepm name(pin4, pin3, pin2, pin1);
+Stepm name(pin4, pin3, pin2, pin1) 
 name is any name for instance stepmotor
 uint8_t pin4,3,2,1 reffers to ESP-32 pins connected to in4,3,2,1 of ULN2003 motor driver
 
@@ -68,4 +70,3 @@ void loop()
 }
 
 ------------------------------------------------------------------------------
-
