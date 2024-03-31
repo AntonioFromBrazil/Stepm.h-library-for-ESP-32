@@ -15,10 +15,9 @@ name.begin();          //At setup() section, issue this begin() command to init 
 
 define instance:
 
-Stepm name(pin4, pin3, pin2, pin1) 
+Stepm name(pin4, pin3, pin2, pin1)
 name is any name for instance stepmotor
 uint8_t pin4,3,2,1 reffers to ESP-32 pins connected to in4,3,2,1 of ULN2003 motor driver
-
 
 methods:
 
