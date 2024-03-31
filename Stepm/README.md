@@ -12,7 +12,7 @@ Stepm name(4,16,17,5); //define instance for ULN2003 driver motor pins in4,in3,i
 
 name.begin();          //At setup() section, issue this begin() command to init the library timer
   
-------------------------------------------------------------------------------<br>
+------------------------------------------------------------------------------
 
 define instance:
 
@@ -43,7 +43,7 @@ As soon as initiated this ms counter is decremented each millisecond<br>
 name.getms();<br>
 return the ms counter at moment (initial ms value setted by previously name.setms)<br>
 
-------------------------------------------------------------------------------<br>
+------------------------------------------------------------------------------
 
 //<br>
 // library Stepm.h<br>
@@ -73,6 +73,5 @@ void loop()<br>
   sm.run(64, 3, false);              //start 64 steps backward (counterclockwise, left) <br>
 }<br>
 
-------------------------------------------------------------------------------<br>
-
+------------------------------------------------------------------------------
 
