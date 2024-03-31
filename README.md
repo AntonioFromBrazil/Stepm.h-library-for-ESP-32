@@ -8,7 +8,8 @@ In the main program is mandatory to define the following:
 
 Stepm name(4,16,17,5); //define instance for ULN2003 driver motor pins in4,in3,in2,in1
 
-name.begin();          //At setup() section, issue this begin() command to init the library timer  
+name.begin();          //At setup() section, issue this begin() command to init the library timer
+  
 ------------------------------------------------------------------------------
 
 define instance:
@@ -25,7 +26,7 @@ at setup() section, to init the library timer
 
 name.run(steps,vel,cw);
 uint32_t steps is the number of steps to travel (512 steps per turn)
-uint8_t vel is the speed (mÃ¡x 3 for right direction, 5 for left direction) increase value means decrease speed
+uint8_t vel is the speed (max 3 for right direction, 5 for left direction) increase value means decrease speed
 boolean cw define direction of turn (true for right, clockwise; false for left, counterclockwise)
 IMPORTANT: the name.run can only be called if the name.where()==0  
 
@@ -39,6 +40,7 @@ As soon as initiated this ms counter is decremented each millisecond
 
 name.getms();
 return the ms counter at moment (initial ms value setted by previously name.setms)
+
 ------------------------------------------------------------------------------
 
 //
