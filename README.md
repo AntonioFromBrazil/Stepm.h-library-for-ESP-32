@@ -8,7 +8,8 @@ In the main program is mandatory to define the following:
 
 Stepm name(4,16,17,5); //define instance for ULN2003 driver motor pins in4,in3,in2,in1
 
-name.begin();          //At setup() section, issue this begin() command to init the library timer  
+name.begin();          //At setup() section, issue this begin() command to init the library timer
+
 ------------------------------------------------------------------------------
 
 define instance:
@@ -38,7 +39,8 @@ set the ms counter down (nonblock to be used in substitution of delay function).
 As soon as initiated this ms counter is decremented each millisecond
 
 name.getms();
-return the ms counter at moment (initial ms value setted by previously name.setms)
+return the ms counter at moment (initial value setted by previously name.setms)
+
 ------------------------------------------------------------------------------
 
 //
