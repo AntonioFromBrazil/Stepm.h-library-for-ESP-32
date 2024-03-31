@@ -1,5 +1,4 @@
 This is a nonblock step motor (28byj-48) library based on interrupts
-
 By Antonio Testa, March/2024
 
 ------------------------------------------------------------------------------
