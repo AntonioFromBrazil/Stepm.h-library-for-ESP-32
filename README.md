@@ -84,7 +84,7 @@ void loop()<br>
   sm.run(4096, 2, true);              //start 4096 steps forward (clockwise, right) <br>
   while (sm.where()>0){}              //wait until step motor arrives to its last destination<br>
   sm.setms(500);while (sm.getms()>0){}//wait 500ms<br>
-  sm.run(4096, 3, false);             //start 4096 steps backward (counterclockwise, left) <br>
+  sm.run(4096, 2, false);             //start 4096 steps backward (counterclockwise, left) <br>
 }<br>
 
 ------------------------------------------------------------------------------<br>
