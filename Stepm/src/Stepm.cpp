@@ -83,224 +83,68 @@ void Stepm::go()
 
   if (xmode==0){
     if (xcw){
-      if (xfase==0){
-        digitalWrite(p1, 0); //0x01
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 1);
-      }
-      if (xfase==1){
-        digitalWrite(p1, 0); //0x02
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==2){
-        digitalWrite(p1, 0); //0x04
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==3){    
-        digitalWrite(p1, 1); //0x08
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
+      if (xfase==0){Stepm::writ(0,0,0,1);} //0x01
+      if (xfase==1){Stepm::writ(0,0,1,0);} //0x02
+      if (xfase==2){Stepm::writ(0,1,0,0);} //0x04
+      if (xfase==3){Stepm::writ(1,0,0,0);} //0x08
     }
-
     if (!xcw){
-      if (xfase==0){
-        digitalWrite(p1, 1); //0x08
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==1){
-        digitalWrite(p1, 0); //0x04
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==2){
-        digitalWrite(p1, 0); //0x02
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==3){    
-        digitalWrite(p1, 0); //0x01
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 1);
-      }
+      if (xfase==0){Stepm::writ(1,0,0,0);} //0x08
+      if (xfase==1){Stepm::writ(0,1,0,0);} //0x04
+      if (xfase==2){Stepm::writ(0,0,1,0);} //0x02
+      if (xfase==3){Stepm::writ(0,0,0,1);} //0x01
     }
   }
-
 
 
   if (xmode==1){
     if (xcw){
-      if (xfase==0){
-        digitalWrite(p1, 1); //0x09
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 1);
-      }
-      if (xfase==1){
-        digitalWrite(p1, 0); //0x03
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 1);
-      }
-      if (xfase==2){
-        digitalWrite(p1, 0); //0x06
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==3){    
-        digitalWrite(p1, 1); //0x0C
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
+      if (xfase==0){Stepm::writ(1,0,0,1);} //0x09
+      if (xfase==1){Stepm::writ(0,0,1,1);} //0x03
+      if (xfase==2){Stepm::writ(0,1,1,0);} //0x06
+      if (xfase==3){Stepm::writ(1,1,0,0);} //0x0C    
     }
-
     if (!xcw){
-      if (xfase==0){
-        digitalWrite(p1, 1); //0x0C
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==1){
-        digitalWrite(p1, 0); //0x06
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==2){
-        digitalWrite(p1, 0); //0x03
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 1);
-      }
-      if (xfase==3){    
-        digitalWrite(p1, 1); //0x09
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 1);
-      }
+      if (xfase==0){Stepm::writ(1,1,0,0);} //0x0C 
+      if (xfase==1){Stepm::writ(0,1,1,0);} //0x06
+      if (xfase==2){Stepm::writ(0,0,1,1);} //0x03
+      if (xfase==3){Stepm::writ(1,0,0,1);} //0x09    
     }
   }
-
 
 
   if (xmode==2){
     if (!xcw){
-      if (xfase==0){
-        digitalWrite(p1, 1); //0x08
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==1){
-        digitalWrite(p1, 1); //0x0C
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==2){
-        digitalWrite(p1, 0); //0x04
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==3){    
-        digitalWrite(p1, 0); //0x06
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==4){
-        digitalWrite(p1, 0); //0x02
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==5){
-        digitalWrite(p1, 0); //0x03
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 1);
-      }
-      if (xfase==6){
-        digitalWrite(p1, 0); //0x01
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 1);
-      }
-      if (xfase==7){    
-        digitalWrite(p1, 1); //0x09
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 1);
-      }
+      if (xfase==0){Stepm::writ(1,0,0,0);} //0x08
+      if (xfase==1){Stepm::writ(1,1,0,0);} //0x0C 
+      if (xfase==2){Stepm::writ(0,1,0,0);} //0x04
+      if (xfase==3){Stepm::writ(0,1,1,0);} //0x06
+      if (xfase==4){Stepm::writ(0,0,1,0);} //0x02
+      if (xfase==5){Stepm::writ(0,0,1,1);} //0x03
+      if (xfase==6){Stepm::writ(0,0,0,1);} //0x01
+      if (xfase==7){Stepm::writ(1,0,0,1);} //0x09
     }
 
     if (xcw){
-      if (xfase==0){
-        digitalWrite(p1, 1); //0x09
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 1);
-      }
-      if (xfase==1){
-        digitalWrite(p1, 0); //0x01
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 1);
-      }
-      if (xfase==2){
-        digitalWrite(p1, 0); //0x03
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 1);
-      }
-      if (xfase==3){    
-        digitalWrite(p1, 0); //0x02
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==4){
-        digitalWrite(p1, 0); //0x06
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 1);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==5){
-        digitalWrite(p1, 0); //0x04
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==6){
-        digitalWrite(p1, 1); //0x0C
-        digitalWrite(p2, 1);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
-      if (xfase==7){    
-        digitalWrite(p1, 1); //0x08
-        digitalWrite(p2, 0);
-        digitalWrite(p3, 0);
-        digitalWrite(p4, 0);
-      }
+      if (xfase==0){Stepm::writ(1,0,0,1);} //0x09
+      if (xfase==1){Stepm::writ(0,0,0,1);} //0x01
+      if (xfase==2){Stepm::writ(0,0,1,1);} //0x03
+      if (xfase==3){Stepm::writ(0,0,1,0);} //0x02    
+      if (xfase==4){Stepm::writ(0,1,1,0);} //0x06
+      if (xfase==5){Stepm::writ(0,1,0,0);} //0x04
+      if (xfase==6){Stepm::writ(1,1,0,0);} //0x0C
+      if (xfase==7){Stepm::writ(1,0,0,0);} //0x08 
     }
   }
 }
 
+//----------------------------------------------------------------------
+void Stepm::writ(uint8_t px1, uint8_t px2, uint8_t px3, uint8_t px4)
+{
+  digitalWrite(p1, px1);
+  digitalWrite(p2, px2);
+  digitalWrite(p3, px3);
+  digitalWrite(p4, px4);
+}
 
 //----------------------------------------------------------------------
