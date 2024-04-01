@@ -8,7 +8,7 @@ class Stepm {
   public:
 
   Stepm(uint8_t pin4, uint8_t pin3, uint8_t pin2, uint8_t pin1);
-  void begin();
+  void begin(uint8_t mode);
   void run(uint32_t steps, uint8_t vel, boolean cw);
   uint32_t where();
   void setms(uint32_t ms);
@@ -22,7 +22,7 @@ class Stepm {
   using isrFunct = void (*)();
   template<uint8_t NUM_INTERRUPTS = SOC_TIMER_GROUP_TOTAL_TIMERS>
   static isrFunct getIsr(uint8_t timerNumber);
-  uint8_t p4,p3,p2,p1,inivel=5;
+  uint8_t p4,p3,p2,p1,inivel=5,xmode=2;
   volatile uint32_t xsteps=0,xms=0;
   volatile uint8_t xfase=0, xvel=5;
   volatile boolean xcw=true;
