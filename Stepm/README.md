@@ -74,17 +74,17 @@ void setup()<br>
                                       //the max speed depending on mode selected:<br>
                                       //mode 0 - max speed 3 for clockwise and 5 for counterclockwise<br>
                                       //mode 1 - max speed 3 for clockwise and 5 for counterclockwise<br>
-                                      //mode 2 - max speed 1 for clockwise and 2 for counterclockwise<br>
+                                      //mode 2 - max speed 2 for clockwise and 3 for counterclockwise<br>
 }<br>
 
 void loop()<br>
 {<br>
   while (sm.where()>0){}              //wait until step motor arrives to its last destination<br>
   sm.setms(500);while (sm.getms()>0){}//wait 500ms<br>
-  sm.run(4096, 1, true);              //start 4096 steps forward (clockwise, right) <br>
+  sm.run(4096, 2, true);              //start 4096 steps forward (clockwise, right) <br>
   while (sm.where()>0){}              //wait until step motor arrives to its last destination<br>
   sm.setms(500);while (sm.getms()>0){}//wait 500ms<br>
-  sm.run(4096, 2, false);             //start 4096 steps backward (counterclockwise, left) <br>
+  sm.run(4096, 3, false);             //start 4096 steps backward (counterclockwise, left) <br>
 }<br>
 
 ------------------------------------------------------------------------------<br>
