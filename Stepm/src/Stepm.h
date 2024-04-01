@@ -18,6 +18,7 @@ class Stepm {
 
   void onTimer1ms();
   void go();
+  void writ(uint8_t px1, uint8_t px2, uint8_t px3, uint8_t px4);
   static Stepm *isrTable[];
   using isrFunct = void (*)();
   template<uint8_t NUM_INTERRUPTS = SOC_TIMER_GROUP_TOTAL_TIMERS>
