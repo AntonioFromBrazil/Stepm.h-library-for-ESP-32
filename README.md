@@ -6,11 +6,11 @@ Special thanks to @gfvalvo from https://forum.arduino.cc who fixed the error: in
 
 In the main program is mandatory to define the following:
 
-#include <Stepm.h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//include the NewStep.h elibrary                   
+#include <Stepm.h>     //include the NewStep.h elibrary                   
 
-Stepm name(5,17,16,4);&nbsp;//define instance for ULN2003 driver motor pins in1,in2,in3,in4
+Stepm name(5,17,16,4); //define instance for ULN2003 driver motor pins in1,in2,in3,in4
 
-name.begin(mode);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//At setup(), issue begin() command to init the library timer and set stepmotor mode operation
+name.begin(mode);      //At setup(), issue begin() command to init the library timer and set stepmotor mode operation
 
 ------------------------------------------------------------------------------
 
