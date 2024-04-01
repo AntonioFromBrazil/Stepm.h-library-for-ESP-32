@@ -1,7 +1,7 @@
 //
 // library Stepm.h
 // Simple example of use
-// move 128 steps forward (clockwise, right) following by 64 steps backward (counterclockwise, left)
+// move 4096 steps forward (clockwise, right) following by 4096 steps backward (counterclockwise, left)
 // 
 // function used:
 // begin() - init the timer library
@@ -11,18 +11,27 @@
 
 #include <Stepm.h>
 
-Stepm sm(4,16,17,5);                 //define instance for ULN2003 driver motor pins in4,in3,in2,in1
+Stepm sm(5,17,16,4);                  //define constructor for ULN2003 driver motor pins in1,in2,in3,in4
 
 void setup()
 {
-  sm.begin();
+  sm.begin(2);                        //define the step motor mode operation (always 4096 steps per turn) 
+                                      //0=full step, low torque, low consumption
+                                      //1=full step, high torque, high consumption
+                                      //2=half step, middle torque, middle consumption
+
+                                      //the max speed depending on mode selected:
+                                      //mode 0 - max speed 3 for clockwise and 5 for counterclockwise
+                                      //mode 1 - max speed 3 for clockwise and 5 for counterclockwise
+                                      //mode 2 - max speed 1 for clockwise and 2 for counterclockwise
 }
 
 void loop()
 {
-  while (sm.where()>0){}             //wait until step motor arrives to its last destination
-  sm.setms(250);while (sm.getms()>0){}
-  sm.run(32, 3, true);              //start 128 steps forward (clockwise, right) 
-  while (sm.where()>0){}             //wait until step motor arrives to its last destination
-  sm.run(16, 3, false);              //start 64 steps backward (counterclockwise, left) 
+  while (sm.where()>0){}              //wait until step motor arrives to its last destination
+  sm.setms(500);while (sm.getms()>0){}//wait 500ms
+  sm.run(4096, 1, true);              //start 4096 steps forward (clockwise, right) 
+  while (sm.where()>0){}              //wait until step motor arrives to its last destination
+  sm.setms(500);while (sm.getms()>0){}//wait 500ms
+  sm.run(4096, 2, false);             //start 4096 steps backward (counterclockwise, left) 
 }
