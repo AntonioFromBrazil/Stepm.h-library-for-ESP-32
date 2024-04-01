@@ -1,5 +1,4 @@
-<font face="Courier">
-This is a nonblock step motor (28byj-48) library based on interrupts<br>By Antonio Testa, March/2024<br><br>
+<font face="Courier">This is a nonblock step motor (28byj-48) library based on interrupts<br>By Antonio Testa, March/2024<br><br>
 Special thanks to @gfvalvo from https://forum.arduino.cc who fixed the error: invalid-use-of-non-static-member-function and gave all tricks to use hardware timers inside the library<br><br>https://forum.arduino.cc/t/error-invalid-use-of-non-static-member-function/1240240<br><br>
 
 ------------------------------------------------------------------------------
