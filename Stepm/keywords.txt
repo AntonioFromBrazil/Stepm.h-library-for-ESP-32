@@ -4,4 +4,3 @@ run        KEYWORD2
 where      KEYWORD2
 setms      KEYWORD2 
 getms      KEYWORD2
-onTimer1ms KEYWORD2
