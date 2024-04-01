@@ -18,7 +18,8 @@ Stepm::Stepm(uint8_t pin4, uint8_t pin3, uint8_t pin2, uint8_t pin1)
 
 
 //----------------------------------------------------------------------
-void Stepm::begin() {
+void Stepm::begin(uint8_t mode) {
+  xmode=mode;
   const uint8_t timerNumber = 0;
   hw_timer_t *timer1ms = NULL;
   timer1ms = timerBegin(timerNumber, 80, true);
@@ -33,7 +34,7 @@ void Stepm::begin() {
 //----------------------------------------------------------------------
 void Stepm::run(uint32_t steps, uint8_t vel, boolean cw)
 {
-  inivel=vel;xvel=vel;xcw=cw;xsteps=steps;
+  inivel=vel;xvel=vel;xcw=cw;xsteps=steps/8;
 }
 
 
@@ -66,7 +67,8 @@ void IRAM_ATTR Stepm::onTimer1ms()
     if (xsteps>0){
       Stepm::go();
       xfase++;
-      if (xfase==4){xfase=0;xsteps--;}
+      if ((xfase==4)&&(xmode<2)){xfase=0;xsteps--;}
+      if ((xfase==8)&&(xmode>1)){xfase=0;xsteps--;}
     }
     if (xsteps==0){digitalWrite(p1, 0);digitalWrite(p2, 0);digitalWrite(p3, 0);digitalWrite(p4, 0);}
   }
@@ -78,56 +80,224 @@ Stepm *Stepm::isrTable[SOC_TIMER_GROUP_TOTAL_TIMERS];
 //----------------------------------------------------------------------
 void Stepm::go()
 {
-  if (xcw){
-    if (xfase==0){
-      digitalWrite(p1, 1); //0x09
-      digitalWrite(p2, 0);
-      digitalWrite(p3, 0);
-      digitalWrite(p4, 1);
+
+  if (xmode==0){
+    if (xcw){
+      if (xfase==0){
+        digitalWrite(p1, 0); //0x01
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 1);
+      }
+      if (xfase==1){
+        digitalWrite(p1, 0); //0x02
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==2){
+        digitalWrite(p1, 0); //0x04
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==3){    
+        digitalWrite(p1, 1); //0x08
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
     }
-    if (xfase==1){
-      digitalWrite(p1, 1); //0x03
-      digitalWrite(p2, 1);
-      digitalWrite(p3, 0);
-      digitalWrite(p4, 0);
-    }
-    if (xfase==2){
-      digitalWrite(p1, 0); //0x06
-      digitalWrite(p2, 1);
-      digitalWrite(p3, 1);
-      digitalWrite(p4, 0);
-    }
-    if (xfase==3){    
-      digitalWrite(p1, 0); //0x0C
-      digitalWrite(p2, 0);
-      digitalWrite(p3, 1);
-      digitalWrite(p4, 1);
+
+    if (!xcw){
+      if (xfase==0){
+        digitalWrite(p1, 1); //0x08
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==1){
+        digitalWrite(p1, 0); //0x04
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==2){
+        digitalWrite(p1, 0); //0x02
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==3){    
+        digitalWrite(p1, 0); //0x01
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 1);
+      }
     }
   }
-  if (!xcw){
-    if (xfase==0){
-      digitalWrite(p1, 0); //0x0C
-      digitalWrite(p2, 0);
-      digitalWrite(p3, 1);
-      digitalWrite(p4, 1);
+
+
+
+  if (xmode==1){
+    if (xcw){
+      if (xfase==0){
+        digitalWrite(p1, 1); //0x09
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 1);
+      }
+      if (xfase==1){
+        digitalWrite(p1, 0); //0x03
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 1);
+      }
+      if (xfase==2){
+        digitalWrite(p1, 0); //0x06
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==3){    
+        digitalWrite(p1, 1); //0x0C
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
     }
-    if (xfase==1){
-      digitalWrite(p1, 0); //0x06
-      digitalWrite(p2, 1);
-      digitalWrite(p3, 1);
-      digitalWrite(p4, 0);
+
+    if (!xcw){
+      if (xfase==0){
+        digitalWrite(p1, 1); //0x0C
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==1){
+        digitalWrite(p1, 0); //0x06
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==2){
+        digitalWrite(p1, 0); //0x03
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 1);
+      }
+      if (xfase==3){    
+        digitalWrite(p1, 1); //0x09
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 1);
+      }
     }
-    if (xfase==2){
-      digitalWrite(p1, 1); //0x03
-      digitalWrite(p2, 1);
-      digitalWrite(p3, 0);
-      digitalWrite(p4, 0);
+  }
+
+
+
+  if (xmode==2){
+    if (!xcw){
+      if (xfase==0){
+        digitalWrite(p1, 1); //0x08
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==1){
+        digitalWrite(p1, 1); //0x0C
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==2){
+        digitalWrite(p1, 0); //0x04
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==3){    
+        digitalWrite(p1, 0); //0x06
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==4){
+        digitalWrite(p1, 0); //0x02
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==5){
+        digitalWrite(p1, 0); //0x03
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 1);
+      }
+      if (xfase==6){
+        digitalWrite(p1, 0); //0x01
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 1);
+      }
+      if (xfase==7){    
+        digitalWrite(p1, 1); //0x09
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 1);
+      }
     }
-    if (xfase==3){    
-      digitalWrite(p1, 1); //0x09
-      digitalWrite(p2, 0);
-      digitalWrite(p3, 0);
-      digitalWrite(p4, 1);
+
+    if (xcw){
+      if (xfase==0){
+        digitalWrite(p1, 1); //0x09
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 1);
+      }
+      if (xfase==1){
+        digitalWrite(p1, 0); //0x01
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 1);
+      }
+      if (xfase==2){
+        digitalWrite(p1, 0); //0x03
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 1);
+      }
+      if (xfase==3){    
+        digitalWrite(p1, 0); //0x02
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==4){
+        digitalWrite(p1, 0); //0x06
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 1);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==5){
+        digitalWrite(p1, 0); //0x04
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==6){
+        digitalWrite(p1, 1); //0x0C
+        digitalWrite(p2, 1);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
+      if (xfase==7){    
+        digitalWrite(p1, 1); //0x08
+        digitalWrite(p2, 0);
+        digitalWrite(p3, 0);
+        digitalWrite(p4, 0);
+      }
     }
   }
 }
