@@ -14,7 +14,7 @@ name.begin(mode);      //At setup(), issue begin() command to init the library t
 
 ------------------------------------------------------------------------------
 
-define instance:
+define constructor:
 
 Stepm name(pin4, pin3, pin2, pin1);<br>
 name is any name for instance stepmotor<br>
