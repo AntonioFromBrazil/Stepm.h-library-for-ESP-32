@@ -2,7 +2,7 @@
 
 <div align="left">
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0" id="table1">
+<table border="0" width="100%" cellspacing="0" cellpadding="0" id="table1" align="left">
 	<tr>
 		<td><font face="Courier">
 		------------------------------------------------------------------------------</font><p>
@@ -30,7 +30,7 @@
 		operation<br>
 		------------------------------------------------------------------------------<br>
 		<br>
-		CONSTRUCTOR:<br>
+		<font color="#0000FF">CONSTRUCTOR:</font><br>
 		<br>
 		<b>Stepm name(pin4, pin3, pin2, pin1); </b><br>
 		name is any name for instance stepmotor<br>
@@ -88,7 +88,7 @@
 		<br>
 		#include &lt;Stepm.h&gt;<br>
 		<br>
-		Stepm sm(5,17,16,4);&nbsp;&nbsp;&nbsp;&nbsp; //define constructor for 28byj-48 and ULN2003 
+		Stepm sm(5,17,16,4);&nbsp;&nbsp;&nbsp; //define constructor for 28byj-48 and ULN2003 
 		driver motor pins in1,in2,in3,in4<br>
 		<br>
 		void setup()<br>
