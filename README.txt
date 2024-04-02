@@ -33,7 +33,7 @@ uint8_t mode should be:
 2=half step, middle torque, middle consumption  
 
 name.run(steps,vel,cw);
-uint32_t steps is the number of steps to travel (512 steps per turn)
+uint32_t steps is the number of steps to travel (4096 steps per turn)
 uint8_t vel is the speed (max 3 for right direction, 5 for left direction) increase value means decrease speed
 boolean cw define direction of turn (true for right, clockwise; false for left, counterclockwise)
 IMPORTANT: the name.run can only be called if the name.where()==0  
