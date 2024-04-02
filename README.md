@@ -3,8 +3,8 @@
 <table border="0" cellspacing="0" cellpadding="0" id="table1">
 	<tr>
 		<td><hr>
-		<p><font face="Courier">This is a nonblock step motor (28byj-48) library 
-		based on interrupts<br>By Antonio Testa, March/2024<br><br>Special thanks to @gfvalvo from https://forum.arduino.cc who fixed the 
+		<p><font face="Courier"><b>This is a nonblock step motor (28byj-48) library 
+		based on interrupts</b><br>By Antonio Testa, March/2024<br><br>Special thanks to @gfvalvo from https://forum.arduino.cc who fixed the 
 		error: invalid-use-of-non-static-member-function and gave all tricks to 
 		use hardware timers inside the library<br><br>https://forum.arduino.cc/t/error-invalid-use-of-non-static-member-function/1240240</font></p>
 		<hr>
@@ -14,8 +14,8 @@
 		pins in1,in2,in3,in4<br><br>name.begin(mode);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; //At setup(), 
 		issue begin() command to init the library timer and set stepmotor mode 
 		operation</font></p><hr>
-		<p><font face="Courier"><font color="#0000FF">CONSTRUCTOR:</font><br>
-		<br><b>Stepm name(pin4, pin3, pin2, pin1); </b><br>name is any name for instance stepmotor<br>uint8_t pin4,3,2,1 reffers to ESP-32 pins connected to in4,3,2,1 of 
+		<p><font face="Courier">CONSTRUCTOR:<br><br><b>Stepm name(pin4, pin3, pin2, pin1);
+		</b><br>name is any name for instance stepmotor<br>uint8_t pin4,3,2,1 reffers to ESP-32 pins connected to in4,3,2,1 of 
 		ULN2003 motor driver<br><br><br>METHODS:<br>
 		<br><b>name.begin(uint8_t mode);</b><br>at setup() section, to init the library timer and step motor mode 
 		operation<br>uint8_t mode should be:<br>0=full step, low torque, low consumption<br>1=full step, high torque, high consumption<br>2=half step, middle torque, middle consumption
