@@ -1,5 +1,7 @@
 <body>
 
+<div align="left">
+
 <table border="0" width="100%" cellspacing="0" cellpadding="0" id="table1">
 	<tr>
 		<td><font face="Courier">
@@ -28,8 +30,7 @@
 		operation<br>
 		------------------------------------------------------------------------------<br>
 		<br>
-		<b>
-		<u><font size="5">constructor:</font></u></b><br>
+		CONSTRUCTOR:<br>
 		<br>
 		<b>Stepm name(pin4, pin3, pin2, pin1); </b><br>
 		name is any name for instance stepmotor<br>
@@ -37,8 +38,8 @@
 		ULN2003 motor driver<br>
 		<br>
 		<br>
-		<u><b><font size="5">methods:</font></b><br>
-		</u><br>
+		METHODS:<br>
+		<br>
 		<b>name.begin(uint8_t mode);</b><br>
 		at setup() section, to init the library timer and step motor mode 
 		operation<br>
@@ -94,33 +95,32 @@
 		{<br>
 &nbsp; sm.begin(2); //define the step motor mode operation (always 4096 steps 
 		per turn) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
 		//0=full step, low torque, low consumption<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
 		//1=full step, high torque, high consumption<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
 		//2=half step, middle torque, middle consumption<br>
 		<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
 		//the max speed depending on mode selected:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
 		//mode 0 - max speed 3 for clockwise and 5 for counterclockwise<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
 		//mode 1 - max speed 3 for clockwise and 5 for counterclockwise<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
 		//mode 2 - max speed 2 for clockwise and 2 for counterclockwise<br>
 		}<br>
 		<br>
 		void loop()<br>
 		{<br>
-&nbsp; while (sm.where()&gt;0){}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp; while (sm.where()&gt;0){}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 		//wait until step motor arrives to its last destination<br>
 &nbsp; sm.setms(500);while (sm.getms()&gt;0){}&nbsp;&nbsp; //wait 500ms<br>
-&nbsp; sm.run(4096, 2, true);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //start 4096 steps forward (clockwise, right) <br>
-&nbsp; while (sm.where()&gt;0){}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //wait until step motor arrives to its last destination<br>
-&nbsp; sm.setms(500);while (sm.getms()&gt;0){} //wait 500ms<br>
-&nbsp; sm.run(4096, 2, false);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
-		//start 4096 steps backward (counterclockwise, left) <br>
+&nbsp; sm.run(4096, 2, true);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //start 4096 steps forward (clockwise, right) <br>
+&nbsp; while (sm.where()&gt;0){}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //wait until step motor arrives to its last destination<br>
+&nbsp; sm.setms(500);while (sm.getms()&gt;0){}&nbsp; //wait 500ms<br>
+&nbsp; sm.run(4096, 2, false);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //start 4096 steps backward (counterclockwise, left) <br>
 		}<br>
 		<br>
 		------------------------------------------------------------------------------<br>
@@ -128,5 +128,7 @@
 		<p>&nbsp;</td>
 	</tr>
 </table>
+
+</div>
 
 </body>
