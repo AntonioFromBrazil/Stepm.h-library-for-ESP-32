@@ -19,7 +19,7 @@
 		ULN2003 motor driver<br><br><br>METHODS:<br>
 		<br><b>name.begin(uint8_t mode);</b><br>at setup() section, to init the library timer and step motor mode 
 		operation<br>uint8_t mode should be:<br>0=full step, low torque, low consumption<br>1=full step, high torque, high consumption<br>2=half step, middle torque, middle consumption
-		<br><br><b>name.run(steps,vel,cw);</b><br>uint32_t steps is the number of steps to travel (512 steps per turn)<br>uint8_t vel is the speed (max 3 for right direction, 5 for left 
+		<br><br><b>name.run(steps,vel,cw);</b><br>uint32_t steps is the number of steps to travel (4096 steps per turn)<br>uint8_t vel is the speed (max 3 for right direction, 5 for left 
 		direction) increase value means decrease speed<br>boolean cw define direction of turn (true for right, clockwise; false 
 		for left, counterclockwise)<br>IMPORTANT: the name.run can only be called if the name.where()==0
 		<br><br><b>name.where();</b><br>retun in an uint32_t value the number of steps remainding to motor 
