@@ -1,6 +1,6 @@
 <body>
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0" id="table1" align="left" bgcolor="#FFFF99">
+<table border="0" cellspacing="0" cellpadding="0" id="table1">
 	<tr>
 		<td><hr>
 		<p><font face="Courier">This is a nonblock step motor (28byj-48) library 
